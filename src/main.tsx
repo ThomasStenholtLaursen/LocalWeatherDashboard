@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ThemeProvider } from "./components/theme-provider.tsx";
 import "./global.css";
 import { Routes } from "./components/routes/routes.tsx";
 import { RouterProvider } from "react-router-dom";
+import Providers from "./components/providers/providers.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <Providers>
       <RouterProvider router={Routes} />
-    </ThemeProvider>
+    </Providers>
   </React.StrictMode>,
 );

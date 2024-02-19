@@ -1,5 +1,5 @@
 function Dashboard() {
-  return <div>Dashboard Page</div>;
+  return <div className="h-screen">Dashboard Page</div>;
 }
 
 export default Dashboard;
