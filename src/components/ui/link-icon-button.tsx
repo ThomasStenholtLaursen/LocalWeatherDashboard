@@ -4,7 +4,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
 import { Label } from "./label";
 
 type IconButtonProps = {
-  Icon: React.ReactNode;
+  icon: React.ReactNode;
   tooltipText?: string;
   withNavigation?: boolean;
 } & (
@@ -13,7 +13,7 @@ type IconButtonProps = {
 );
 
 const LinkIconButton = ({
-  Icon,
+  icon,
   tooltipText,
   navigateTo,
   withLink = false,
@@ -24,12 +24,12 @@ const LinkIconButton = ({
         {withLink && navigateTo ? (
           <Link to={navigateTo}>
             <Button size="icon" variant="ghost">
-              {Icon}
+              {icon}
             </Button>
           </Link>
         ) : (
           <Button size="icon" variant="ghost">
-            {Icon}
+            {icon}
           </Button>
         )}
       </TooltipTrigger>
