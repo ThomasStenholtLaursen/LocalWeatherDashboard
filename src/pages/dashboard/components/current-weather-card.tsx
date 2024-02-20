@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { calculateWindChill } from "@/helpers/calculateWindChill";
+import { convertStringToDate } from "@/helpers/convertStringToDate";
 import { Label } from "@radix-ui/react-label";
 import { Cloudy, Droplets, Umbrella, Wind } from "lucide-react";
 import { useMemo } from "react";
@@ -24,16 +25,13 @@ function CurrentWeatherCard(props: CurrentWeatherCardProps) {
   const temp = forecastTimeStep?.data.instant.details?.air_temperature || 0;
   const wSpeed = forecastTimeStep?.data.instant.details?.wind_speed || 0;
 
-  function convertStringToDate(dateString: string): Date {
-    return new Date(dateString);
-  }
-
   const currentDate = useMemo(() => {
     return forecastTimeStep?.time
-      ? convertStringToDate(forecastTimeStep.time).toLocaleString("en-GB", {
+      ? convertStringToDate(forecastTimeStep?.time).toLocaleString("en-GB", {
           dateStyle: "medium",
+          timeStyle: "short",
         })
-      : null;
+      : undefined;
   }, [forecastTimeStep?.time]);
 
   const windChill = useMemo(() => {
@@ -73,7 +71,7 @@ function CurrentWeatherCard(props: CurrentWeatherCardProps) {
                 <WeatherCardDetail
                   key={"wind"}
                   icon={Wind}
-                  information={`${forecastTimeStep?.data.instant.details?.wind_speed} (${forecastTimeStep?.data.instant.details?.wind_speed_of_gust})`}
+                  information={`${Math.round(forecastTimeStep?.data.instant.details?.wind_speed ?? 0)} (${Math.round(forecastTimeStep?.data.instant.details?.wind_speed_of_gust ?? 0)})`}
                   unit={`${forecastUnits?.wind_speed}`}
                   description="Wind speed"
                 />
