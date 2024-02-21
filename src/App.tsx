@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
-import NavBar from "./components/layout/header/navbar";
-import Footer from "./components/layout/footer/footer";
+import GlobalFooter from "./components/layout/footer/GlobalFooter";
+import GlobalNavbar from "./components/layout/header/GlobalNavbar";
 
 function App() {
   return (
     <>
-      <NavBar />
+      <GlobalNavbar />
       <Outlet />
-      <Footer />
+      <GlobalFooter />
     </>
   );
 }

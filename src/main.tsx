@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./global.css";
-import { Routes } from "./components/routes/routes.tsx";
 import { RouterProvider } from "react-router-dom";
-import Providers from "./components/providers/providers.tsx";
+import ApplicationProviders from "./components/providers/ApplicationProviders.tsx";
+import { ApplicationRoutes } from "./components/routes/ApplicationRoutes.tsx";
+import "./global.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Providers>
-      <RouterProvider router={Routes} />
-    </Providers>
+    <ApplicationProviders>
+      <RouterProvider router={ApplicationRoutes} />
+    </ApplicationProviders>
   </React.StrictMode>,
 );

@@ -1,4 +1,4 @@
-import { Data } from "@/clients/weatherClient";
+import { Data } from "@/clients/metWeatherClient";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -8,7 +8,7 @@ type HourTabsProps = {
   forecastData: Data | undefined;
 };
 
-function HourTabs({ forecastData }: HourTabsProps) {
+function CurrentHourTabs({ forecastData }: HourTabsProps) {
   return (
     <Tabs defaultValue="1H" className="w-full">
       <TabsList className="grid w-full grid-cols-3">
@@ -87,4 +87,4 @@ function HourTabs({ forecastData }: HourTabsProps) {
   );
 }
 
-export default HourTabs;
+export default CurrentHourTabs;

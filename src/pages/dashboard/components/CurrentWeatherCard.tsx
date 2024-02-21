@@ -1,4 +1,4 @@
-import { ForecastTimeStep, ForecastUnits } from "@/clients/weatherClient";
+import { ForecastTimeStep, ForecastUnits } from "@/clients/metWeatherClient";
 import {
   Card,
   CardContent,
@@ -13,8 +13,8 @@ import { weatherIconMapping } from "@/lib/weatherIcons";
 import { Label } from "@radix-ui/react-label";
 import { Droplets, Umbrella, Wind } from "lucide-react";
 import { useMemo } from "react";
-import HourTabs from "./hour-tabs";
-import WeatherCardDetail from "./weather-card-detail";
+import CurrentHourTabs from "./CurrentHourTabs";
+import WeatherCardDetail from "./WeatherCardDetail";
 
 type CurrentWeatherCardProps = {
   currentForecastTimestep: ForecastTimeStep | undefined;
@@ -102,7 +102,7 @@ function CurrentWeatherCard(props: CurrentWeatherCardProps) {
         </CardContent>
       </CardHeader>
       <CardFooter className="p-4 pt-0">
-        <HourTabs forecastData={currentForecastTimestep?.data} />
+        <CurrentHourTabs forecastData={currentForecastTimestep?.data} />
       </CardFooter>
     </Card>
   );

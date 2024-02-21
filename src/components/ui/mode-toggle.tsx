@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "../providers/provider/theme-provider";
+import { useTheme } from "../providers/provider/ThemeProvider";
 import { Label } from "./label";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
 

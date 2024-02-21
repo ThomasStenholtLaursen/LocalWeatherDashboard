@@ -1,8 +1,8 @@
-import { useWeatherClient } from "@/hooks/api/use-weather-client";
+import { useMetWeatherClient } from "@/hooks/clients/useMetWeatherClient";
 import { useQuery } from "react-query";
 
 export const useFetchWeather = (latitude: number, longitude: number) => {
-  const weatherClient = useWeatherClient();
+  const weatherClient = useMetWeatherClient();
 
   return useQuery({
     queryFn: async () => {

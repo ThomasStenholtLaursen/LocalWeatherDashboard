@@ -1,16 +1,16 @@
-import { useFetchWeather } from "@/hooks/api/use-fetch-weather";
+import { ForecastTimeStep } from "@/clients/metWeatherClient";
+import { useFetchWeather } from "@/hooks/api/useFetchWeather";
 import { BD_LATITUDE, BD_LONGITUDE } from "@/lib/defaults";
 import { useMemo } from "react";
-import CurrentWeatherCard from "./components/current-weather-card";
-import ForecastList from "./components/forecast-list";
-import { ForecastTimeStep } from "@/clients/weatherClient";
+import CurrentWeatherCard from "./components/CurrentWeatherCard";
+import ForecastList from "./components/ForecastList";
 
 export type HourlyForecastsByDay = {
   key: string;
   hourlyForecasts: ForecastTimeStep[];
 };
 
-function Dashboard() {
+function DashboardPage() {
   const { data: weatherData } = useFetchWeather(BD_LATITUDE, BD_LONGITUDE);
 
   const currentDateTimeData = useMemo(() => {
@@ -77,4 +77,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default DashboardPage;

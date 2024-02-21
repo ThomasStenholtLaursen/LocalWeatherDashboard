@@ -2,7 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import { Github, Info, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export default function Footer() {
+export default function GlobalFooter() {
   return (
     <footer>
       <Separator />

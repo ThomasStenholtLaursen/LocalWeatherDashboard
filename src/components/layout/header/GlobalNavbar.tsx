@@ -11,7 +11,7 @@ import { DASHBOARD_PAGE } from "@/lib/paths";
 import { Menu } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const NavBar = () => {
+const GlobalNavbar = () => {
   return (
     <div className="fixed w-full bg-background/30 backdrop-blur-md">
       <div className="container flex items-center justify-between py-2 pl-6 pr-6">
@@ -47,4 +47,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default GlobalNavbar;

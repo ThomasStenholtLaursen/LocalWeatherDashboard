@@ -1,4 +1,4 @@
-import { ForecastTimeStep } from "@/clients/weatherClient";
+import { ForecastTimeStep } from "@/clients/metWeatherClient";
 import {
   Dialog,
   DialogContent,

@@ -1,6 +1,6 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { HourlyForecastsByDay } from "../dashboard";
-import ForecastListItem from "./forecast-list-item";
+import { HourlyForecastsByDay } from "../DashboardPage";
+import ForecastListItem from "./ForecastListItem";
 
 type ForecastListProps = {
   hourlyForecastsForMultipleDays: HourlyForecastsByDay[] | undefined;

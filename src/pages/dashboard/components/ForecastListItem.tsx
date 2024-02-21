@@ -1,11 +1,11 @@
-import { ForecastTimeStep } from "@/clients/weatherClient";
+import { ForecastTimeStep } from "@/clients/metWeatherClient";
 import { Card } from "@/components/ui/card";
 import { DialogTrigger } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { ChevronRight } from "lucide-react";
 import { useMemo } from "react";
-import ForecastsDialog from "./forecasts-dialog";
+import ForecastsDialog from "./ForecastDialog";
 
 type ForecastListItemProps = {
   date: Date;

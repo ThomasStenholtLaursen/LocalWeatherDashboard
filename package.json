@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "generate-yr-weather-client": "nswag openapi2tsclient /input:https://api.met.no/weatherapi/locationforecast/2.0/swagger.json /output:src/clients/YrweatherClient.ts /classname:YrWeatherClient"
+    "generate-met-weather-client": "nswag openapi2tsclient /input:https://api.met.no/weatherapi/locationforecast/2.0/swagger.json /output:src/clients/metWeatherClient.ts /classname:MetWeatherClient"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",

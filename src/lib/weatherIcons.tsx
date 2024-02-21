@@ -1,4 +1,4 @@
-import { WeatherSymbol } from "@/clients/weatherClient";
+import { WeatherSymbol } from "@/clients/metWeatherClient";
 import {
   CloudDrizzle,
   CloudFog,

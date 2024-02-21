@@ -1,11 +1,11 @@
 import App from "@/App";
 import { HOME_PAGE } from "@/lib/paths";
-import Dashboard from "@/pages/dashboard/dashboard";
-import { ErrorPage } from "@/pages/error/error-page";
-import { NotFoundPage } from "@/pages/not-found/not-found";
+import DashboardPage from "@/pages/dashboard/DashboardPage";
+import { ErrorPage } from "@/pages/error/ErrorPage";
+import { NotFoundPage } from "@/pages/notFound/NotFound";
 import { createBrowserRouter } from "react-router-dom";
 
-export const Routes = createBrowserRouter([
+export const ApplicationRoutes = createBrowserRouter([
   {
     path: HOME_PAGE,
     element: <App />,
@@ -13,7 +13,7 @@ export const Routes = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Dashboard />,
+        element: <DashboardPage />,
       },
     ],
   },
