@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { ChevronRight } from "lucide-react";
 import { useMemo } from "react";
-import ForecastsDialog from "./ForecastDialog";
+import DayForecastDialog from "./DayForecastDialog";
 
 type ForecastListItemProps = {
   date: Date;
@@ -60,16 +60,23 @@ const ForecastListItem = (props: ForecastListItemProps) => {
   }, [hourlyForecasts]);
 
   return (
-    <ForecastsDialog hourlyForecastsByDay={hourlyForecasts}>
+    <DayForecastDialog hourlyForecastsByDay={hourlyForecasts}>
       <DialogTrigger asChild>
-        <Card className="mb-2 cursor-pointer p-3 hover:pointer-events-auto hover:bg-primary/10">
+        <Card className="m-3 cursor-pointer p-3 hover:pointer-events-auto hover:bg-primary/10">
           <div className="flex items-center space-x-4">
             <div className="flex w-10 flex-col">
-              <Label className="text-md">
+              <Label className="md:hidden">
                 {isToday(date)
                   ? "Today"
                   : date.toLocaleDateString("en-GB", {
                       weekday: "short",
+                    })}
+              </Label>
+              <Label className="hidden text-xs md:block md:text-lg lg:text-sm">
+                {isToday(date)
+                  ? "Today"
+                  : date.toLocaleDateString("en-GB", {
+                      weekday: "long",
                     })}
               </Label>
               <Label className="text-xs">
@@ -81,18 +88,22 @@ const ForecastListItem = (props: ForecastListItemProps) => {
             </div>
             <div className="flex flex-grow items-center justify-center space-x-3">
               <div className="flex items-center">
-                <Label className="text-sm">
+                <Label className="text-xs md:text-lg lg:text-sm">
                   {temperatureRange.highest}&deg; / {temperatureRange.lowest}
                   &deg;
                 </Label>
               </div>
-              <Separator orientation="vertical" className="h-7" />
-              <div className="flex items-center space-x-1">
-                <Label className="text-sm">{totalPrecipitation} mm</Label>
+              <Separator orientation="vertical" className="h-10 lg:h-8" />
+              <div className="flex items-center">
+                <Label className="text-xs md:text-lg lg:text-sm">
+                  {totalPrecipitation} mm
+                </Label>
               </div>
-              <Separator orientation="vertical" className="h-7" />
-              <div className="flex items-center space-x-1">
-                <Label className="text-sm">{meanWindspeed} m/s</Label>
+              <Separator orientation="vertical" className="h-10 lg:h-8" />
+              <div className="flex items-center">
+                <Label className="text-xs md:text-lg lg:text-sm">
+                  {meanWindspeed} m/s
+                </Label>
               </div>
             </div>
             <div className="flex justify-end">
@@ -101,7 +112,7 @@ const ForecastListItem = (props: ForecastListItemProps) => {
           </div>
         </Card>
       </DialogTrigger>
-    </ForecastsDialog>
+    </DayForecastDialog>
   );
 };
 

@@ -19,7 +19,7 @@ type WeatherIconMapping = {
   [key in WeatherSymbol]: (size: number) => JSX.Element;
 };
 
-export const weatherIconMapping: WeatherIconMapping = {
+export const WeatherIconMapping: WeatherIconMapping = {
   clearsky_day: (size) => <Sun size={size} />,
   clearsky_night: (size) => <Moon size={size} />,
   clearsky_polartwilight: (size) => <Moon size={size} />,

@@ -10,6 +10,7 @@ export function ModeToggle() {
   const handleClick = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+
   return (
     <Tooltip>
       <TooltipTrigger asChild>

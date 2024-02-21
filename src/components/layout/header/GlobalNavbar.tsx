@@ -13,17 +13,22 @@ import { Link } from "react-router-dom";
 
 const GlobalNavbar = () => {
   return (
-    <div className="fixed w-full bg-background/30 backdrop-blur-md">
+    <div className="fixed z-10 w-full bg-background/30 backdrop-blur-md">
       <div className="container flex items-center justify-between py-2 pl-6 pr-6">
         <div>
           <Link
-            className="pr-4 text-2xl font-extrabold text-foreground"
+            className="hidden pr-4 text-2xl font-extrabold text-foreground lg:block"
+            to={DASHBOARD_PAGE}
+          >
+            LocalWeatherDashboard
+          </Link>
+          <Link
+            className="pr-4 text-2xl font-extrabold text-foreground lg:hidden"
             to={DASHBOARD_PAGE}
           >
             LWD
           </Link>
         </div>
-
         <div className="flex">
           <div>
             <ModeToggle />

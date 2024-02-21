@@ -15,6 +15,5 @@ export const useFetchWeather = (latitude: number, longitude: number) => {
       return response;
     },
     staleTime: 1000 * 60 * 5, // 5 minutes before refetch
-    cacheTime: 1000 * 60 * 20, // 20 minutes before cache expires
   });
 };
