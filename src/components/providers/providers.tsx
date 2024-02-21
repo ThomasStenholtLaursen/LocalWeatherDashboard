@@ -11,13 +11,13 @@ const queryClient = new QueryClient();
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <QueryClientProvider client={queryClient}>
-        <YrWeatherClientProvider client={yrWeatherClient}>
+    <QueryClientProvider client={queryClient}>
+      <YrWeatherClientProvider client={yrWeatherClient}>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <TooltipProvider>{children}</TooltipProvider>
-        </YrWeatherClientProvider>
-      </QueryClientProvider>
-    </ThemeProvider>
+        </ThemeProvider>
+      </YrWeatherClientProvider>
+    </QueryClientProvider>
   );
 }
 

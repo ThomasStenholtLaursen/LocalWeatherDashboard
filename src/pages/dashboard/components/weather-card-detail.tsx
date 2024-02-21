@@ -15,7 +15,7 @@ function WeatherCardDetail({
   description,
 }: WeatherCardDetailProps) {
   return (
-    <div className="flex items-center space-x-3">
+    <div className="flex items-center space-x-2">
       <Icon size={25} />
       <Label className="text-sm ">
         {information} {unit}

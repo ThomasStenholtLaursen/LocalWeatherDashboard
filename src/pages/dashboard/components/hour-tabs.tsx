@@ -2,7 +2,7 @@ import { Data } from "@/clients/weatherClient";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Thermometer, Umbrella } from "lucide-react";
+import { CloudRain, Thermometer, Umbrella } from "lucide-react";
 
 type HourTabsProps = {
   forecastData: Data | undefined;
@@ -17,57 +17,69 @@ function HourTabs({ forecastData }: HourTabsProps) {
         <TabsTrigger value="12H">12 Hours</TabsTrigger>
       </TabsList>
       <TabsContent value="1H">
-        <Card className="p-2">
-          <div className="flex items-center space-x-2">
-            <Thermometer size={20} />
-            <Label className=" text-sm ">18&deg;</Label>
-            <Label className="text-xs text-muted-foreground"></Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Umbrella size={20} />
-            <Label className=" text-sm">
-              {forecastData?.next_1_hours?.details.probability_of_precipitation}
-              %
-            </Label>
-            <Label className="text-xs text-muted-foreground">
-              Precipitation
-            </Label>
+        <Card className="p-3 pl-5 pr-5">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-1">
+              <Thermometer size={20} />
+              <Label className="text-md">
+                {`${Math.round(forecastData?.instant.details?.air_temperature ?? 0)}`}
+                &deg;
+              </Label>
+              <Label className="text-xs text-muted-foreground"></Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Umbrella size={20} />
+              <Label className="text-md">
+                {`${Math.round(forecastData?.next_1_hours?.details.precipitation_amount_min ?? 0)}-${Math.round(forecastData?.next_1_hours?.details.precipitation_amount_max ?? 0)} mm`}
+              </Label>
+              <Label className="text-xs text-muted-foreground"></Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <CloudRain size={20} />
+              <Label className="text-md">
+                {`${Math.round(forecastData?.next_1_hours?.details.probability_of_precipitation ?? 0)} %`}
+              </Label>
+              <Label className="text-xs text-muted-foreground"></Label>
+            </div>
           </div>
         </Card>
       </TabsContent>
       <TabsContent value="6H">
-        <Card className="p-2">
-          <div className="flex items-center space-x-2">
-            <Thermometer size={20} />
-            <Label className=" text-sm ">18&deg;</Label>
-            <Label className="text-xs text-muted-foreground">
-              Precipitation
-            </Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Umbrella size={20} />
-            <Label className=" text-sm ">0mm</Label>
-            <Label className="text-xs text-muted-foreground">
-              Precipitation
-            </Label>
+        <Card className="p-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-1">
+              <Thermometer size={20} />
+              <Label className="text-md">
+                {`${Math.round(forecastData?.next_6_hours?.details.air_temperature_min ?? 0)}-${Math.round(forecastData?.next_6_hours?.details.air_temperature_max ?? 0)}`}
+                &deg;
+              </Label>
+              <Label className="text-xs text-muted-foreground"></Label>
+            </div>
+            <div className="flex items-center space-x-1">
+              <Umbrella size={20} />
+              <Label className="text-md">
+                {`${Math.round(forecastData?.next_6_hours?.details.precipitation_amount_min ?? 0)}-${Math.round(forecastData?.next_6_hours?.details.precipitation_amount_max ?? 0)} mm`}
+              </Label>
+              <Label className="text-xs text-muted-foreground"></Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <CloudRain size={20} />
+              <Label className="text-md">
+                {`${Math.round(forecastData?.next_6_hours?.details.probability_of_precipitation ?? 0)} %`}
+              </Label>
+              <Label className="text-xs text-muted-foreground"></Label>
+            </div>
           </div>
         </Card>
       </TabsContent>
       <TabsContent value="12H">
-        <Card className="p-2">
-          <div className="flex items-center space-x-2">
-            <Thermometer size={20} />
-            <Label className=" text-sm ">18&deg;</Label>
-            <Label className="text-xs text-muted-foreground">
-              Precipitation
+        <Card className="p-3 ">
+          <div className="flex items-center justify-center space-x-2">
+            <CloudRain size={20} />
+            <Label className="text-md">
+              {`${Math.round(forecastData?.next_12_hours?.details.probability_of_precipitation ?? 0)} %`}
             </Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Umbrella size={20} />
-            <Label className="text-sm">0mm</Label>
-            <Label className="text-xs text-muted-foreground">
-              Precipitation
-            </Label>
+            <Label className="text-xs text-muted-foreground"></Label>
           </div>
         </Card>
       </TabsContent>
