@@ -1,5 +1,5 @@
 import App from "@/App";
-import { DASHBOARD_PAGE, ERROR_PAGE, ROOT } from "@/lib/paths";
+import { DASHBOARD_PAGE, ROOT } from "@/lib/paths";
 import DashboardPage from "@/pages/dashboard/DashboardPage";
 import { ErrorPage } from "@/pages/error/ErrorPage";
 import { HomePage } from "@/pages/home/HomePage";
@@ -19,10 +19,6 @@ export const ApplicationRoutes = createBrowserRouter([
       {
         path: DASHBOARD_PAGE,
         element: <DashboardPage />,
-      },
-      {
-        path: ERROR_PAGE,
-        element: <ErrorPage />,
       },
     ],
   },

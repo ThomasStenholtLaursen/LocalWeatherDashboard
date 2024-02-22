@@ -35,6 +35,7 @@ function DashboardPage() {
     return isDataLoading || isFetching;
   }, [isDataLoading, isFetching]);
 
+  // Current date and time forecast with attempt to adjust for timezone
   const currentDateTimeData = useMemo(() => {
     if (weatherData) {
       const today = new Date();

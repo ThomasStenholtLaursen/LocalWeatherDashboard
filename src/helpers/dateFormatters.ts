@@ -1,9 +1,7 @@
-import { convertStringToDate } from "./convertStringToDate";
-
 export const formatDateFullDateAndTime = (dateString: string | undefined) => {
   if (!dateString) return undefined;
 
-  return convertStringToDate(dateString).toLocaleString("en-GB", {
+  return new Date(dateString).toLocaleString("en-GB", {
     dateStyle: "medium",
     timeStyle: "short",
   });
@@ -12,7 +10,7 @@ export const formatDateFullDateAndTime = (dateString: string | undefined) => {
 export const formatDateWeekday = (dateString: string | undefined) => {
   if (!dateString) return undefined;
 
-  return convertStringToDate(dateString).toLocaleString("en-GB", {
+  return new Date(dateString).toLocaleString("en-GB", {
     weekday: "long",
   });
 };
@@ -20,7 +18,7 @@ export const formatDateWeekday = (dateString: string | undefined) => {
 export const formatDateToTime = (dateString: string | undefined) => {
   if (!dateString) return undefined;
 
-  return convertStringToDate(dateString).toLocaleString("en-GB", {
+  return new Date(dateString).toLocaleString("en-GB", {
     timeStyle: "short",
   });
 };
@@ -28,7 +26,7 @@ export const formatDateToTime = (dateString: string | undefined) => {
 export const formatDateMonthAndWeekday = (dateString: string | undefined) => {
   if (!dateString) return undefined;
 
-  return convertStringToDate(dateString).toLocaleString("en-GB", {
+  return new Date(dateString).toLocaleString("en-GB", {
     weekday: "long",
     day: "numeric",
     month: "long",

@@ -17,6 +17,7 @@ type ForecastScrollListProps = {
 const ForecastScrollList = (props: ForecastScrollListProps) => {
   const { weatherData, isLoading } = props;
 
+  // Forecasts by day and each hour
   const dailyForecasts = useMemo(() => {
     if (weatherData) {
       const forecastsByDay: Record<string, ForecastTimeStep[]> = {};
