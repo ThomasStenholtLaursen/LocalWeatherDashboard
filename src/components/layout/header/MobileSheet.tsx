@@ -46,13 +46,6 @@ function MobileSheet(props: MobileSheetProps) {
             >
               <Label className="cursor-pointer text-base">Dashboard</Label>
             </Link>
-            <Link
-              to={ROOT}
-              className="rounded p-2 hover:bg-primary/20"
-              onClick={handleClose}
-            >
-              <Label className="cursor-pointer text-base">About</Label>
-            </Link>
           </div>
         </SheetContent>
       </Sheet>

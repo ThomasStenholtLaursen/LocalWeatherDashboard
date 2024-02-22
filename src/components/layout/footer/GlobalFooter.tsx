@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import { Github, Info, Linkedin } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function GlobalFooter() {
@@ -18,10 +18,6 @@ export default function GlobalFooter() {
             }
           >
             <Github className="text-muted-foreground" />
-          </Link>
-
-          <Link to={""}>
-            <Info className="text-muted-foreground" />
           </Link>
         </div>
         <div className="mt-5 md:order-1 md:mt-0">

@@ -20,16 +20,16 @@ const GlobalNavbar = () => {
   const handleCloseMobileSheet = () => setOpenMobileSheet(false);
 
   return (
-    <nav className="fixed  z-20 w-full bg-background/30 backdrop-blur-md">
-      <div className="container flex flex-wrap items-center justify-between py-2">
+    <nav className="fixed z-20 w-full bg-background/30 backdrop-blur-md">
+      <div className="ml-3 mr-3 flex flex-wrap items-center justify-between py-2 md:container">
         <Link to={ROOT}>
           <Label className="text-2xl font-bold">LWD</Label>
         </Link>
-        <div className="flex md:order-2 md:space-x-0 rtl:space-x-reverse">
+        <div className="flex md:order-2 md:space-x-4 rtl:space-x-reverse">
           <div>
             <ModeToggle />
           </div>
-          <div className="md:hidden">
+          <div>
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link to={DASHBOARD_PAGE}>
@@ -60,25 +60,6 @@ const GlobalNavbar = () => {
                 <Label className="text-xs text-foreground">Menu</Label>
               </TooltipContent>
             </Tooltip>
-          </div>
-        </div>
-        <div className="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto">
-          <div className="flex flex-col md:flex-row md:space-x-10 ">
-            <Link to={ROOT}>
-              <Label className="cursor-pointer text-base">Home</Label>
-            </Link>
-            <div>
-              <Separator orientation="vertical" />
-            </div>
-            <Link to={DASHBOARD_PAGE}>
-              <Label className="cursor-pointer text-base">Dashboard</Label>
-            </Link>
-            <div>
-              <Separator orientation="vertical" />
-            </div>
-            <Link to={DASHBOARD_PAGE}>
-              <Label className="cursor-pointer text-base">About</Label>
-            </Link>
           </div>
         </div>
       </div>
