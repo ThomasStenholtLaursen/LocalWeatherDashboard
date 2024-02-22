@@ -2,7 +2,9 @@
 
 Local weather application that shows the forecast 10 days using MET weather API.
 
-### Some of the features:
+### Watch a live [here](https://marvelous-brioche-bc1359.netlify.app "Local Weather Dashboard").
+
+#### Some of the features:
 
 - ✅ Shows data live.
 - ✅ Responsive for both dekstop, laptop, tablet and mobile.
