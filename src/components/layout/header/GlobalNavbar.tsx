@@ -23,7 +23,7 @@ const GlobalNavbar = () => {
     <nav className="fixed z-20 w-full bg-background/30 backdrop-blur-md">
       <div className="ml-3 mr-3 flex flex-wrap items-center justify-between py-2 md:container">
         <Link to={ROOT}>
-          <Label className="text-2xl font-bold">LWD</Label>
+          <Label className="cursor-pointer text-2xl font-bold">LWD</Label>
         </Link>
         <div className="flex md:order-2 md:space-x-4 rtl:space-x-reverse">
           <div>

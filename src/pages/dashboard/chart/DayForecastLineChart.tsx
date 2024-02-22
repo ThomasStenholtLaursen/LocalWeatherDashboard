@@ -67,7 +67,7 @@ const DayForecastLineChart = (props: DayForecastLineChartProps) => {
   }: TooltipProps<ValueType, NameType>) => {
     if (active) {
       return (
-        <div className="space-y-1  rounded-md  border bg-card p-2 text-center text-card-foreground shadow">
+        <div className="space-y-1 rounded-md border bg-card p-2 text-center text-card-foreground shadow">
           <p className="text-base font-bold text-foreground">{label}</p>
           <Separator orientation="horizontal" />
           <div>
@@ -103,7 +103,6 @@ const DayForecastLineChart = (props: DayForecastLineChartProps) => {
         <Tooltip content={<CustomTooltip />} />
         <Bar yAxisId="right" dataKey="pre" barSize={20} fill="#348AA7" />
         <Line
-          isAnimationActive={false}
           strokeWidth={3}
           dot={false}
           yAxisId="left"
