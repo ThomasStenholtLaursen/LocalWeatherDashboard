@@ -29,7 +29,7 @@ export function DayForecastDialog(props: DayForecastDialogProps) {
               formatDateMonthAndWeekday(hourlyForecastsByDay[0].time)}
           </DialogTitle>
         </DialogHeader>
-        <ScrollArea className="max-h-[450px]">
+        <ScrollArea className="max-h-[450px] px-4 pb-2">
           <table className="w-full table-auto">
             <thead className="">
               <tr className="border-b text-center">
@@ -64,7 +64,12 @@ export function DayForecastDialog(props: DayForecastDialogProps) {
                       )}
                     </td>
                     <td className="py-2 md:text-xl">
-                      {`${forecast.data.next_1_hours?.details.precipitation_amount_min}-${forecast.data.next_1_hours?.details.precipitation_amount_max}`}
+                      {forecast.data.next_1_hours?.details
+                        .precipitation_amount_min !== undefined &&
+                      forecast.data.next_1_hours?.details
+                        .precipitation_amount_max !== undefined
+                        ? `${forecast.data.next_1_hours.details.precipitation_amount_min}-${forecast.data.next_1_hours.details.precipitation_amount_max}`
+                        : ""}
                     </td>
                     <td className="py-2 md:text-xl">
                       {Math.round(
