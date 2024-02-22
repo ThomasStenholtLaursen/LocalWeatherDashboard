@@ -20,6 +20,12 @@ Local weather application that shows the forecast 10 days using MET weather API.
 git clone https://github.com/ThomasStenholtLaursen/LocalWeatherDashboard
 ```
 
+### **Navigate to root folder and install node modules:**
+
+```
+npm install
+```
+
 ### **Navigate to root folder and run locally with:**
 
 ```
