@@ -34,7 +34,7 @@ npm run generate-yr-weather-client
 - Shadcn/ui for re-usable component templates, see [installation](https://ui.shadcn.com/docs/installation/vite "Vite + shadcn/ui installation").
 - Icons from [Lucide React](https://lucide.dev/icons/ "Lucide React Icons").
 - React Query as fetching library, see [docs](https://tanstack.com/query/v3/docs/framework/react/overview "TanStack Query v3 - Overview").
-- Meteorologisk institutt Weather API (aka. yr.no), see [introduction](https://developer.yr.no/doc/GettingStarted/ "MET Weather API - Getting Started").
+- Meteorologisk institutt Weather API, see [Yr.no introduction](https://developer.yr.no/doc/GettingStarted/ "MET Weather API - Getting Started").
 - NSwag to generate TypeScript Client (see [NSwag GitHub](https://github.com/RicoSuter/NSwag "Vite getting started")). The MET API provides schema with Swagger OpenAPI (see [MET API Swagger json](https://api.met.no/weatherapi/locationforecast/2.0/swagger "Schema for the JSON format included in the OpenAPI spec")) ,
 
 ---
