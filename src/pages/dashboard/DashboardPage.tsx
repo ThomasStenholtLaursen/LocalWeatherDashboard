@@ -7,13 +7,13 @@ import {
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatDateFullDateAndTime } from "@/helpers/dateFormatters";
-import { useFetchWeather } from "@/hooks/api/useFetchWeather";
+import { useFetchWeather } from "@/hooks/fetch/useFetchWeather";
 import { BD_LATITUDE, BD_LONGITUDE } from "@/lib/defaults";
 import { LineChart } from "lucide-react";
 import { useMemo } from "react";
-import DayForecastLineChart from "./components/DayForecastLineChart";
-import ForecastScrollList from "./components/ForecastScrollList";
-import WeatherDetailCards from "./components/WeatherDetailCards";
+import DayForecastLineChart from "./chart/DayForecastLineChart";
+import ForecastScrollList from "./forecastList/ForecastScrollList";
+import WeatherDetailCards from "./detailCards/WeatherDetailCards";
 import { ErrorPage } from "../error/ErrorPage";
 
 export interface Forecast {
