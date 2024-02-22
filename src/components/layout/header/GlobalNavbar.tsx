@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { ModeToggle } from "@/components/ui/mode-toggle";
-import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
   TooltipContent,
@@ -20,7 +19,7 @@ const GlobalNavbar = () => {
   const handleCloseMobileSheet = () => setOpenMobileSheet(false);
 
   return (
-    <nav className="fixed z-20 w-full bg-background/30 backdrop-blur-md">
+    <header className=" sticky top-0 z-50 w-full border-b border-border/80 backdrop-blur-md">
       <div className="ml-3 mr-3 flex flex-wrap items-center justify-between py-2 md:container">
         <Link to={ROOT}>
           <Label className="cursor-pointer text-2xl font-bold">LWD</Label>
@@ -45,7 +44,7 @@ const GlobalNavbar = () => {
               </TooltipContent>
             </Tooltip>
           </div>
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
@@ -67,8 +66,7 @@ const GlobalNavbar = () => {
         open={openMobileSheet}
         handleClose={handleCloseMobileSheet}
       />
-      <Separator />
-    </nav>
+    </header>
   );
 };
 

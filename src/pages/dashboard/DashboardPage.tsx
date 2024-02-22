@@ -69,7 +69,7 @@ function DashboardPage() {
   }
 
   return (
-    <div className="container flex h-full min-h-screen items-center justify-center pb-10 pt-20 lg:pb-0 lg:pt-20">
+    <div className="container flex flex-1 items-center justify-center py-10 ">
       {/* Dashboard background */}
       <Card className="w-full bg-transparent from-primary/10 to-background px-4 pb-4 md:block md:rounded-lg md:border md:bg-gradient-to-t">
         {isLoading ? (

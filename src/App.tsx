@@ -4,11 +4,11 @@ import GlobalNavbar from "./components/layout/header/GlobalNavbar";
 
 function App() {
   return (
-    <>
+    <div className="flex min-h-screen flex-col bg-background">
       <GlobalNavbar />
       <Outlet />
       <GlobalFooter />
-    </>
+    </div>
   );
 }
 
