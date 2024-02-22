@@ -69,9 +69,9 @@ function DashboardPage() {
   }
 
   return (
-    <div className="container flex flex-1 items-center justify-center py-10 ">
+    <div className="m-4 flex flex-1 items-center justify-center md:container md:py-4 ">
       {/* Dashboard background */}
-      <Card className="w-full bg-transparent from-primary/10 to-background px-4 pb-4 md:block md:rounded-lg md:border md:bg-gradient-to-t">
+      <Card className=" w-full bg-transparent from-primary/10 to-background px-4 pb-4 md:block md:rounded-lg md:border md:bg-gradient-to-t">
         {isLoading ? (
           <div className="flex w-full flex-col space-y-2 py-6">
             <Skeleton className="h-10 w-80 max-w-[270px] flex-grow" />
@@ -79,7 +79,9 @@ function DashboardPage() {
           </div>
         ) : (
           <CardHeader className="px-2 py-6">
-            <CardTitle className="text-4xl">Rosenkrantzgade 19B</CardTitle>
+            <CardTitle className="text-2xl md:text-4xl ">
+              Rosenkrantzgade 19B
+            </CardTitle>
             <CardDescription className="text-md flex flex-col space-y-2">
               <Label>Current conditions</Label>
               <Label className="lg:hidden">{currentDateAndTime}</Label>
