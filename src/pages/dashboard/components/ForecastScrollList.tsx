@@ -2,6 +2,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import ForecastListItem from "./ForecastListItem";
 import { ForecastTimeStep, METJSONForecast } from "@/clients/metWeatherClient";
 import { useMemo } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export type HourlyForecastsByDay = {
   key: string;
@@ -9,11 +10,12 @@ export type HourlyForecastsByDay = {
 };
 
 type ForecastScrollListProps = {
-  weatherData: METJSONForecast;
+  weatherData: METJSONForecast | undefined;
+  isLoading: boolean;
 };
 
 const ForecastScrollList = (props: ForecastScrollListProps) => {
-  const { weatherData } = props;
+  const { weatherData, isLoading } = props;
 
   const dailyForecasts = useMemo(() => {
     if (weatherData) {
@@ -52,14 +54,24 @@ const ForecastScrollList = (props: ForecastScrollListProps) => {
 
   return (
     <ScrollArea className="h-[500px]">
-      {dailyForecasts &&
+      {isLoading ? (
+        <>
+          {Array.from({ length: 8 }).map((_, index) => (
+            <div key={index} className="my-3 w-full rounded-lg px-3">
+              <Skeleton className="h-14 flex-grow "></Skeleton>
+            </div>
+          ))}
+        </>
+      ) : (
+        dailyForecasts &&
         dailyForecasts.map(({ key, hourlyForecasts }, index) => (
           <ForecastListItem
             key={index}
             date={new Date(key)}
             hourlyForecasts={hourlyForecasts}
           />
-        ))}
+        ))
+      )}
     </ScrollArea>
   );
 };

@@ -1,5 +1,6 @@
 import { Card, CardFooter, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
+import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import React from "react";
 
@@ -10,6 +11,7 @@ type WeatherDetailCardProps = {
   icon: React.ComponentType<{ size?: string | number }>;
   hideFooter?: boolean;
   className?: string;
+  isLoading: boolean;
 };
 
 const WeatherDetailCard = React.forwardRef<
@@ -21,7 +23,7 @@ const WeatherDetailCard = React.forwardRef<
     children,
     footer,
     className,
-    hideFooter,
+    isLoading,
     icon: Icon,
     ...rest
   } = props;
@@ -42,8 +44,12 @@ const WeatherDetailCard = React.forwardRef<
         </div>
       </CardHeader>
       <div className="flex items-center justify-center">{children}</div>
-      {!hideFooter && (
-        <CardFooter className=" items-baseline p-4 pb-2">
+      {isLoading ? (
+        <div className="w-full items-baseline p-4 pb-2">
+          <Skeleton className="min-h-2 w-24 flex-grow" />
+        </div>
+      ) : (
+        <CardFooter className="items-baseline p-4 pb-2">
           <Label className="text-xs text-muted-foreground md:text-sm">
             {footer}
           </Label>

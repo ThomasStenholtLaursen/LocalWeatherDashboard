@@ -19,7 +19,7 @@ import { METJSONForecast } from "@/clients/metWeatherClient";
 import { formatDateToTime } from "@/helpers/dateFormatters";
 
 type DayForecastLineChartProps = {
-  data: METJSONForecast;
+  data: METJSONForecast | undefined;
 };
 const DayForecastLineChart = (props: DayForecastLineChartProps) => {
   const { data } = props;

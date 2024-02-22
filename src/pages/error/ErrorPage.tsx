@@ -1,13 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { HOME_PAGE } from "@/lib/paths";
+import { ROOT } from "@/lib/paths";
 import { useNavigate } from "react-router-dom";
 
 export function ErrorPage() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(HOME_PAGE);
+    console.log("Clicked home button.");
+    navigate(ROOT);
   };
 
   return (

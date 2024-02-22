@@ -8,7 +8,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { DASHBOARD_PAGE } from "@/lib/paths";
-import { Menu } from "lucide-react";
+import { LayoutDashboard, Menu } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const GlobalNavbar = () => {
@@ -32,6 +32,20 @@ const GlobalNavbar = () => {
         <div className="flex">
           <div>
             <ModeToggle />
+          </div>
+          <div>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button size="icon" variant="ghost">
+                  <LayoutDashboard />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent className="bg-secondary">
+                <Label className="text-xs text-foreground">
+                  Weather Dashboard
+                </Label>
+              </TooltipContent>
+            </Tooltip>
           </div>
           <div className="lg:hidden">
             <Tooltip>

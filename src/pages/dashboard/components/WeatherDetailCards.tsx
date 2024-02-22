@@ -9,14 +9,16 @@ import { Label } from "@radix-ui/react-label";
 import { Calendar, Droplets, Thermometer, Umbrella, Wind } from "lucide-react";
 import { useMemo } from "react";
 import WeatherDetailCard from "./WeatherDetailCard";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type WeatherDetailCardsProps = {
-  currentForecastTimestep: ForecastTimeStep;
-  forecastUnits: ForecastUnits;
+  currentForecastTimestep: ForecastTimeStep | undefined;
+  forecastUnits: ForecastUnits | undefined;
+  isLoading: boolean;
 };
 
 const WeatherDetailCards = (props: WeatherDetailCardsProps) => {
-  const { currentForecastTimestep, forecastUnits } = props;
+  const { currentForecastTimestep, forecastUnits, isLoading } = props;
   const temp =
     currentForecastTimestep?.data.instant.details?.air_temperature || 0;
   const wSpeed = currentForecastTimestep?.data.instant.details?.wind_speed || 0;
@@ -45,12 +47,19 @@ const WeatherDetailCards = (props: WeatherDetailCardsProps) => {
         footer={currentDateAndTime}
         className="hidden"
         icon={Calendar}
+        isLoading={isLoading}
       >
-        <div className="flex items-center">
-          <Label className="min-h-12 text-center text-2xl font-bold md:text-3xl">
-            {currentWeekday}
-          </Label>
-        </div>
+        {isLoading ? (
+          <div className="flex w-full items-center">
+            <Skeleton className="mx-10 min-h-10 flex-grow" />
+          </div>
+        ) : (
+          <div className="flex items-center">
+            <Label className="min-h-12 text-center text-2xl font-bold md:text-3xl">
+              {currentWeekday}
+            </Label>
+          </div>
+        )}
       </WeatherDetailCard>
 
       {/* Temperature Card */}
@@ -58,33 +67,49 @@ const WeatherDetailCards = (props: WeatherDetailCardsProps) => {
         title="Temperature"
         footer={`Feels like ${windChill}°C`}
         icon={Thermometer}
+        isLoading={isLoading}
       >
-        <div className="flex items-center">
-          <Label className="text-4xl font-bold md:text-5xl">
-            {Math.round(temp)}&deg;
-          </Label>
-          <div className="ml-2 hidden text-muted-foreground md:block">
-            {WeatherIcon(40)}
+        {isLoading ? (
+          <div className="flex w-full justify-center">
+            <Skeleton className="min-h-10 w-20 " />
           </div>
-          <div className="ml-2 md:hidden">{WeatherIcon(30)}</div>
-        </div>
+        ) : (
+          <div className="flex items-center">
+            <Label className="text-4xl font-bold md:text-5xl">
+              {Math.round(temp)}&deg;
+            </Label>
+            <div className="ml-2 hidden text-muted-foreground md:block">
+              {WeatherIcon(40)}
+            </div>
+            <div className="ml-2 md:hidden">{WeatherIcon(30)}</div>
+          </div>
+        )}
       </WeatherDetailCard>
+
+      {/* Precipitation Card */}
       <WeatherDetailCard
         title="Precipitation"
         footer="In the next hour"
         icon={Umbrella}
+        isLoading={isLoading}
       >
-        <div className="flex items-center">
-          <Label className="text-4xl font-bold md:text-5xl">
-            {
-              currentForecastTimestep?.data.next_1_hours?.details
-                .precipitation_amount
-            }
-          </Label>
-          <Label className="ml-2 text-lg text-muted-foreground md:text-xl">
-            {forecastUnits?.precipitation_amount}
-          </Label>
-        </div>
+        {isLoading ? (
+          <div className="flex w-full justify-center">
+            <Skeleton className="min-h-10 w-20 " />
+          </div>
+        ) : (
+          <div className="flex items-center">
+            <Label className="text-4xl font-bold md:text-5xl">
+              {
+                currentForecastTimestep?.data.next_1_hours?.details
+                  .precipitation_amount
+              }
+            </Label>
+            <Label className="ml-2 text-lg text-muted-foreground md:text-xl">
+              {forecastUnits?.precipitation_amount}
+            </Label>
+          </div>
+        )}
       </WeatherDetailCard>
 
       {/* WindSpeed Card */}
@@ -95,18 +120,25 @@ const WeatherDetailCards = (props: WeatherDetailCardsProps) => {
             0,
         )} m/s`}
         icon={Wind}
+        isLoading={isLoading}
       >
-        <div className="flex items-center gap-x-1.5">
-          <Label className="text-4xl font-bold md:text-5xl">
-            {Math.round(
-              currentForecastTimestep?.data.instant.details?.wind_speed ?? 0,
-            )}
-          </Label>
+        {isLoading ? (
+          <div className="flex w-full justify-center">
+            <Skeleton className="min-h-10 w-20 " />
+          </div>
+        ) : (
+          <div className="flex items-center gap-x-1.5">
+            <Label className="text-4xl font-bold md:text-5xl">
+              {Math.round(
+                currentForecastTimestep?.data.instant.details?.wind_speed ?? 0,
+              )}
+            </Label>
 
-          <Label className="text-lg text-muted-foreground md:text-xl">
-            {forecastUnits?.wind_speed}
-          </Label>
-        </div>
+            <Label className="text-lg text-muted-foreground md:text-xl">
+              {forecastUnits?.wind_speed}
+            </Label>
+          </div>
+        )}
       </WeatherDetailCard>
 
       {/* Humidity Card */}
@@ -114,18 +146,25 @@ const WeatherDetailCards = (props: WeatherDetailCardsProps) => {
         title="Humidity"
         footer="Relative humidity"
         icon={Droplets}
+        isLoading={isLoading}
       >
-        <div className="flex items-center">
-          <Label className="text-4xl font-bold md:text-5xl">
-            {Math.round(
-              currentForecastTimestep?.data.instant.details
-                ?.relative_humidity ?? 0,
-            )}
-          </Label>
-          <Label className="ml-2 text-lg text-muted-foreground md:text-xl">
-            {forecastUnits?.relative_humidity}
-          </Label>
-        </div>
+        {isLoading ? (
+          <div className="flex w-full justify-center">
+            <Skeleton className="min-h-10 w-20 " />
+          </div>
+        ) : (
+          <div className="flex items-center">
+            <Label className="text-4xl font-bold md:text-5xl">
+              {Math.round(
+                currentForecastTimestep?.data.instant.details
+                  ?.relative_humidity ?? 0,
+              )}
+            </Label>
+            <Label className="ml-2 text-lg text-muted-foreground md:text-xl">
+              {forecastUnits?.relative_humidity}
+            </Label>
+          </div>
+        )}
       </WeatherDetailCard>
     </>
   );
