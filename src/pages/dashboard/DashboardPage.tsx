@@ -68,86 +68,62 @@ function DashboardPage() {
   }
 
   return (
-    <>
-      <div className="container  pb-10 pt-24 sm:px-6">
-        {/* Dashboard background */}
-        <Card className="bg-transparent from-primary/10 to-background px-4 pb-4 md:block md:rounded-lg md:border md:bg-gradient-to-t">
+    <div className="container  pb-10 pt-24 sm:px-6">
+      {/* Dashboard background */}
+      <Card className="bg-transparent from-primary/10 to-background px-4 pb-4 md:block md:rounded-lg md:border md:bg-gradient-to-t">
+        {isLoading ? (
+          <div className="flex w-full flex-col space-y-2 py-6">
+            <Skeleton className="h-10 w-80 max-w-[270px] flex-grow" />
+            <Skeleton className="h-3 w-36 max-w-[100px] flex-grow" />
+          </div>
+        ) : (
+          <CardHeader className="px-2 py-6">
+            <CardTitle className="text-4xl">Rosenkrantzgade 19B</CardTitle>
+            <CardDescription className="text-md flex flex-col space-y-2">
+              <Label>Current conditions</Label>
+              <Label className="lg:hidden">{currentDateAndTime}</Label>
+            </CardDescription>
+          </CardHeader>
+        )}
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-2 lg:grid-cols-5">
+          {/* Weather detail cards */}
+          <WeatherDetailCards
+            isLoading={isLoading}
+            currentForecastTimestep={currentDateTimeData}
+            forecastUnits={weatherData?.properties.meta.units}
+          />
+
+          {/* Forecasts for the next days detail cards */}
+          <Card className="col-span-2 md:col-span-2 lg:col-span-2">
+            <ForecastScrollList
+              weatherData={weatherData}
+              isLoading={isLoading}
+            />
+          </Card>
+
+          {/* Line chart for next 24 with temp and precipitation */}
           {isLoading ? (
-            <div className="flex w-full flex-col space-y-2 py-6">
-              <Skeleton className="h-10 w-80 max-w-[270px] flex-grow" />
-              <Skeleton className="h-3 w-36 max-w-[100px] flex-grow" />
+            <div className="col-span-2 w-full flex-col rounded-lg border shadow md:col-span-2 lg:col-span-3">
+              <Skeleton className="min-h-[500px] flex-grow" />
             </div>
           ) : (
-            <CardHeader className="px-2 py-6">
-              <CardTitle className="text-4xl">Rosenkrantzgade 19B</CardTitle>
-              <CardDescription className="text-md flex flex-col space-y-2">
-                <Label>Current conditions</Label>
-                <Label className="lg:hidden">{currentDateAndTime}</Label>
-              </CardDescription>
-            </CardHeader>
-          )}
-          <div className="grid grid-cols-2 gap-3 md:grid-cols-2 lg:grid-cols-5">
-            {/* Weather detail cards */}
-            <WeatherDetailCards
-              isLoading={isLoading}
-              currentForecastTimestep={currentDateTimeData}
-              forecastUnits={weatherData?.properties.meta.units}
-            />
-
-            {/* Forecasts for the next days detail cards */}
-            <Card className="col-span-2 md:col-span-2 lg:col-span-2">
-              <ForecastScrollList
-                weatherData={weatherData}
-                isLoading={isLoading}
-              />
-            </Card>
-
-            {/* Line chart for next 24 with temp and precipitation */}
-            {isLoading ? (
-              <div className="col-span-2 w-full flex-col rounded-lg border shadow md:col-span-2 lg:col-span-3">
-                <Skeleton className="min-h-[500px] flex-grow" />
+            <Card className="col-span-2 flex-col justify-end lg:col-span-3 lg:block">
+              <div className="flex items-center justify-between p-5 ">
+                <Label className="text-md text-muted-foreground md:text-lg">
+                  Next 24 hours
+                </Label>
+                <div className="text-muted-foreground">
+                  <LineChart size={25} />
+                </div>
               </div>
-            ) : (
-              <Card className="col-span-2 flex-col justify-end lg:col-span-3 lg:block">
-                <div className="flex items-center justify-between p-5 ">
-                  <Label className="text-md text-muted-foreground md:text-lg">
-                    Next 24 hours
-                  </Label>
-                  <div className="text-muted-foreground">
-                    <LineChart size={25} />
-                  </div>
-                </div>
-                <div className="h-5/6">
-                  <DayForecastLineChart data={weatherData} />
-                </div>
-              </Card>
-            )}
-          </div>
-        </Card>
-      </div>
-      <div className="container  pb-10 pt-24 sm:px-6">
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-        <div>tdfs</div>
-      </div>
-    </>
+              <div className="h-5/6">
+                <DayForecastLineChart data={weatherData} />
+              </div>
+            </Card>
+          )}
+        </div>
+      </Card>
+    </div>
   );
 }
 
